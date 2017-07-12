@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar'
-import{Router, Switch, BrowserRouter, Route, Redirect} from 'react-router-dom'
+import {Router, Switch, BrowserRouter, Route, Redirect} from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 import AddStudent from './AddStudent'
 import AllStudents from './AllStudents'
 import Campus from './Campus'
 import AllCampuses from './AllCampuses'
+import AddCampus from './AddCampus'
 
 import store, {fetchCampuses, fetchStudents} from '../store'
 
@@ -19,28 +20,31 @@ export default class Root extends Component{
 
   render(){
     return(
-      <Provider store={store}>
-        <div>
-          <Navbar />
-          <main>
-            <div className = 'container'>
-              <div className = 'col s12 m9 l10'>
-                <BrowserRouter>
-                  <Switch>
-                      <Route exact path='/campuses' component = {AllCampuses}/>
-                      <Route path = '/campuses/:campusId' component = {Campus}/>
-                      <Route exact path = '/students' component = {AllStudents}/>
-                      <Route path = '/students/add' component = {AddStudent}/>
-                        <Redirect from = '/' to = '/campuses'/>
+      <div>
+        a
+      </div>
+      // <Provider store={store}>
+      //   <div>
+      //     <Navbar />
+      //     <main>
+      //       <div className = 'container'>
+      //         <div className = 'col s12 m9 l10'>
+      //           <BrowserRouter>
+      //             <Switch>
+      //               <Route exact path='/campuses' component = {AllCampuses}/>
+      //               <Route exact path='/campuses/add' component = {AddCampus}/>
+      //               <Route path = '/campuses/:campusId' component = {Campus}/>
+      //               <Route exact path = '/students' component = {AllStudents}/>
+      //               <Route path = '/students/add' component = {AddStudent}/>
+      //               <Redirect from = '/' to = '/campuses'/>
+      //             </Switch>
+      //           </BrowserRouter>
+      //         </div>
+      //       </div>
 
-                  </Switch>
-                </BrowserRouter>
-              </div>
-            </div>
-
-          </main>
-        </div>
-      </Provider>
+      //     </main>
+      //   </div>
+      // </Provider>
     )
   }
 }

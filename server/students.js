@@ -47,19 +47,20 @@ router.delete('/:id', function(req,res,next){
 })
 
 router.post('/', function(req,res,next){
+  console.log(req.body)
   Campus.findOrCreate({
     where:{
-      name: req.body.campus
+      id: req.body.campusId
     }
   })
   .spread(campus => {
     const student = Student.build(req.body)
-    student.setCampus(campus, { save: false})
-    return MessageChannel.save()
-      .then(student => {
-        student = student.toJSON()
-        student.campus= campus
-        return student
+    // student.setCampus(campus, { save: false})
+    return student.save()
+      .then(studentOut => {
+        studentOut = studentOut.toJSON()
+        studentOut.campus= campus
+        return studentOut
       })
   })
   .then(student => {

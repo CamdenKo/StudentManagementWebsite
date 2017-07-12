@@ -34,9 +34,9 @@ export function fetchStudents() {
   }
 }
 
-export function postStudent(name,email,campus){
+export function postStudent(name,email,campusId,imageUrl){
   return function thunk(dispatch){
-    axios.post('/api/students', {name, email, campus})
+    axios.post('/api/students', {name, email, campusId,imageUrl})
     .then(res => res.data)
     .then(student => {
       dispatch(getStudent(student))
