@@ -15,26 +15,23 @@ export default class Root extends Component{
     store.dispatch(fetchCampuses())
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <Provider store={store}>
-        <div>
-          <Navbar />
-          <main>
-            <div className = 'container'>
-              <div className = 'col s12 m9 l10'>
-                <BrowserRouter>
-                  <Switch>
-                    <Route exact path='/campuses' component = {AllCampuses}/>
-                    <Route exact path = '/students' component = {AllStudents}/>
-                    <Redirect from = '/' to = '/campuses'/>
-                  </Switch>
-                </BrowserRouter>
+        <main>
+          <BrowserRouter>
+            <div>
+              <Route path='/' component={Navbar} />
+              <div className='container'>
+                <div className='col s12 m9 l10'>
+                  <Route exact path='/campuses' component={AllCampuses} />
+                  <Route exact path='/students' component={AllStudents} />
+                  <Redirect from='/' to='/campuses' />
+                </div>
               </div>
             </div>
-
-          </main>
-        </div>
+          </BrowserRouter>
+        </main>
       </Provider>
     )
   }

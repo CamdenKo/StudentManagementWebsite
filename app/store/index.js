@@ -10,7 +10,7 @@ import studentField from './studentField'
 const reducer = combineReducers({
   students,
   campuses,
-  studentField
+  studentField,
 })
 
 

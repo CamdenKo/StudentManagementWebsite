@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-
+import React from 'react';
+import { Link } from 'react-router-dom'
 
 export default function Navbar(){
   return(
@@ -7,10 +7,11 @@ export default function Navbar(){
       <div className = 'nav-wrapper container firstColor'>
         <a className = 'brand-logo left '>Better Fullstack</a>
         <ul id = 'nav-mobile' className = 'right'>
-          <li><a>Students</a></li>
-          <li><a>Campuses</a></li>
+          <li><Link to = '/students'>Students</Link></li>
+          <li><Link to = '/campuses'>Campuses</Link></li>
         </ul>
       </div>
     </nav>
   )
 }
+
