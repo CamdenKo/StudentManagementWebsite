@@ -21,7 +21,7 @@ function AddStudent(props){
         <div className = 'row'>
           <div className="input-field col s12">
             <input id="imageUrl" type="text" className="validate" />
-            <label>imageUrl</label>
+            <label>Image Url</label>
           </div>
         </div>
         <div className = 'row'>

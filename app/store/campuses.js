@@ -36,6 +36,7 @@ export function fetchCampuses() {
 
 export function postCampus(name, imageUrl){
   return function thunk(dispatch){
+    console.log('name,imageurl post campus', name, imageUrl)
     axios.post('/api/campus', {name,imageUrl})
     .then(res => res.data)
     .then(campus => {
