@@ -20,7 +20,7 @@ function AddCampus(props){
         </div>
         <div className = 'row'>
           <div className = 'col s12'>
-            <button type = 'submit' className = 'btn waves-effect waves-light'>
+            <button type = 'submit' className = 'btn waves-effect waves-light modal-close'>
               Submit<i className = 'material-icons right'>send</i>
             </button>
           </div>
@@ -30,14 +30,13 @@ function AddCampus(props){
   )
 }
 
-function mapStateToProps(state,oldProps){
+function mapStateToProps(state){
   return {}
 }
 
 function mapDispatchToProps(dispatch){
   return {
     sendCampus(evt){
-      console.log('sendCampus')
       evt.preventDefault()
       dispatch(postCampus(evt.target.name.value, evt.target.imageUrl.value))
     }

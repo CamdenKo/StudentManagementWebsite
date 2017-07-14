@@ -41,25 +41,26 @@ router.put('/:id', function(req,res,next){
 })
 
 router.delete('/:id', function(req,res,next){
+  const student = req.student
   req.student.destroy()
-  .then(() => res.status(204).end())
+  .then(() => res.status(200).json(student))
   .catch(next)
 })
 
 router.post('/', function(req,res,next){
   console.log(req.body)
-  Campus.findOrCreate({
+  Campus.findOne({
     where:{
       id: req.body.campusId
     }
   })
-  .spread(campus => {
+  .then(campus => {
     const student = Student.build(req.body)
-    // student.setCampus(campus, { save: false})
+    student.setCampus(campus, { save: false})
     return student.save()
       .then(studentOut => {
         studentOut = studentOut.toJSON()
-        studentOut.campus= campus
+        studentOut.campus = campus
         return studentOut
       })
   })

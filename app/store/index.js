@@ -5,12 +5,12 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 
 import students from './students'
 import campuses from './campuses'
-import studentField from './studentField'
+import fields from './fields'
 
 const reducer = combineReducers({
   students,
   campuses,
-  studentField,
+  fields,
 })
 
 
@@ -18,4 +18,4 @@ export default createStore(reducer, composeWithDevTools(applyMiddleware(thunkMid
 
 export * from './campuses'
 export * from './students'
-export * from './studentField'
+export * from './fields'

@@ -18,20 +18,20 @@ export default class Root extends Component{
   render() {
     return (
       <Provider store={store}>
-        <main>
-          <BrowserRouter>
+        <BrowserRouter>
+          <main>
             <div>
               <Route path='/' component={Navbar} />
               <div className='container'>
-                <div className='col s12 m9 l10'>
-                  <Route exact path='/campuses' component={AllCampuses} />
+                <Switch>
                   <Route exact path='/students' component={AllStudents} />
+                  <Route exact path='/campuses' component={AllCampuses} />
                   <Redirect from='/' to='/campuses' />
-                </div>
+                </Switch>
               </div>
             </div>
-          </BrowserRouter>
-        </main>
+          </main>
+        </BrowserRouter>
       </Provider>
     )
   }

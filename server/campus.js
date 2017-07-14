@@ -43,7 +43,8 @@ router.put('/:campusId', function(req,res,next){
 })
 
 router.delete('/:campusId', function(req,res, next){
+  const campus = req.campus
   req.campus.destroy()
-  .then(() => res.status(204).end())
+  .then(() => res.status(200).json(campus))
   .catch(next)
 })

@@ -3,6 +3,7 @@ import axios from 'axios'
 const GOT_CAMPUSES_FROM_SERVER = 'GOT_CAMPUSES_FROM_SERVER'
 const GET_CAMPUS = 'GET_CAMPUS'
 const REMOVE_CAMPUS = 'REMOVE_CAMPUS'
+const EDIT_CAMPUS = 'EDIT_CAMPUS'
 
 export function gotCampusesFromServer(campuses){
   return {
@@ -25,6 +26,21 @@ export function removeCampus(campus){
   }
 }
 
+export function editCampus(campus){
+  return{
+    type: EDIT_CAMPUS,
+    campus
+  }
+}
+
+export function putCampus(id, name, imageUrl){
+  return function thunk(dispatch){
+    axios.put(`/api/campus/${id}`, {name,imageUrl})
+    .then(res => res.data)
+    .then(campus => dispatch(editCampus(campus)))
+    .catch(err => console.error(err).bind(console))
+  }
+}
 export function fetchCampuses() {
   return function thunk(dispatch){
     axios.get('/api/campus')
@@ -36,7 +52,6 @@ export function fetchCampuses() {
 
 export function postCampus(name, imageUrl){
   return function thunk(dispatch){
-    console.log('name,imageurl post campus', name, imageUrl)
     axios.post('/api/campus', {name,imageUrl})
     .then(res => res.data)
     .then(campus => {
@@ -59,7 +74,6 @@ export function deleteCampus(id){
 export default function campusReducer(state = [], action){
   switch(action.type){
     case GOT_CAMPUSES_FROM_SERVER:
-      console.log(action.campuses)
       return action.campuses
     case GET_CAMPUS:
       return [...state, action.campus]
@@ -67,6 +81,8 @@ export default function campusReducer(state = [], action){
       return [...state].filter(function(campus){
         return +campus.id !== +action.campus.id
       })
+    case EDIT_CAMPUS:
+      return state.map(campus => +campus.id === action.campus.id ? action.campus : campus)
     default:
       return state
   }

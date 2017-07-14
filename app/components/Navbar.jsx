@@ -5,7 +5,7 @@ export default function Navbar(){
   return(
     <nav className = 'firstColor'>
       <div className = 'nav-wrapper container firstColor'>
-        <a className = 'brand-logo left '>Better Fullstack</a>
+        <Link className = 'brand-logo left' to = '/campuses'>Better Fullstack</Link>
         <ul id = 'nav-mobile' className = 'right'>
           <li><Link to = '/students'>Students</Link></li>
           <li><Link to = '/campuses'>Campuses</Link></li>

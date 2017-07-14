@@ -1,14 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import AddStudent from './AddStudent'
-import {toggleField} from '../store'
+import {toggleAddStudent} from '../store'
 
-export function Students(props){
+function Students(props){
   return (
     <div>
       <ul className="collection">
         {
-          props.students.filter(student => +student.campusId === +props.campusId).map(student => (
+          props.students.filter(student => +student.campusId === +props.campusId).map(student => {
+
+            return (
             <li key = {student.id} className="collection-item avatar">
               <img src={`${student.imageUrl}`} alt={`${student.name}`} className="circle" />
               <span className="title">{`${student.name}`}</span>
@@ -16,15 +18,9 @@ export function Students(props){
                 Joined: {`${student.createdAt}`}
               </p>
             </li>
-          ))
+          )})
         }
       </ul>
-      <div className = 'left'>
-        <a onClick = {() => props.toggleState(props.campusId)} className="waves-effect waves-teal btn-flat center">Add Student</a>
-      </div>
-      {
-        props.studentField[props.campusId] && <AddStudent campusId = {props.campusId}/>
-      }
     </div>
   )
 }
@@ -32,18 +28,8 @@ export function Students(props){
 function mapStateToProps(state, oldProps){
   return{
     students: state.students,
-    campusId: oldProps.campusId,
-    showAdd: false,
-    studentField: state.studentField
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return{
-    toggleState(id){
-      dispatch(toggleField(id))
-    }
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Students)
+export default connect(mapStateToProps)(Students)
