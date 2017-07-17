@@ -18,7 +18,7 @@ router.post('/', function(req,res,next){
   .catch(next)
 })
 
-router.param('campusId', function(req,res,next,id){
+router.param('campusId', function(req,res,next,id){ //Very dry.  Good work!
   Campus.findById(id)
   .then(campus => {
     if(!campus){

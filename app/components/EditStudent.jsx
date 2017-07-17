@@ -3,6 +3,8 @@ import { Input } from 'react-materialize'
 import { connect } from 'react-redux'
 import { putStudent, toggleEditStudent } from '../store'
 
+//Small thing, but maybe try and make the add student window bigger?  It took me awhile to figure out that
+//the submit button was out of sight and you had to scroll to see it haha
 function EditStudent(props){
   const options = props.campuses.map(campus => (
                      <option value = {campus.id} key = {campus.id}>{campus.name}</option>

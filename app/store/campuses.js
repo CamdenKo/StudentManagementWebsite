@@ -35,7 +35,7 @@ export function editCampus(campus){
 
 export function putCampus(id, name, imageUrl){
   return function thunk(dispatch){
-    axios.put(`/api/campus/${id}`, {name,imageUrl})
+    return axios.put(`/api/campus/${id}`, {name,imageUrl})
     .then(res => res.data)
     .then(campus => dispatch(editCampus(campus)))
     .catch(err => console.error(err).bind(console))
@@ -43,7 +43,7 @@ export function putCampus(id, name, imageUrl){
 }
 export function fetchCampuses() {
   return function thunk(dispatch){
-    axios.get('/api/campus')
+    return axios.get('/api/campus')
     .then(res => res.data)
     .then(campuses => dispatch(gotCampusesFromServer(campuses)))
     .catch(console.error.bind(console))
@@ -52,7 +52,7 @@ export function fetchCampuses() {
 
 export function postCampus(name, imageUrl){
   return function thunk(dispatch){
-    axios.post('/api/campus', {name,imageUrl})
+    return axios.post('/api/campus', {name,imageUrl})
     .then(res => res.data)
     .then(campus => {
       dispatch(getCampus(campus))
@@ -63,7 +63,7 @@ export function postCampus(name, imageUrl){
 
 export function deleteCampus(id){
   return function thunk(dispatch){
-    axios.delete(`/api/campus/${id}`)
+    return axios.delete(`/api/campus/${id}`)
     .then(res => res.data)
     .then(campus => {
       dispatch(removeCampus(campus))
@@ -75,14 +75,14 @@ export default function campusReducer(state = [], action){
   switch(action.type){
     case GOT_CAMPUSES_FROM_SERVER:
       return action.campuses
-    case GET_CAMPUS:
+    case GET_CAMPUS://update campuses?
       return [...state, action.campus]
     case REMOVE_CAMPUS:
       return [...state].filter(function(campus){
         return +campus.id !== +action.campus.id
       })
     case EDIT_CAMPUS:
-      return state.map(campus => +campus.id === action.campus.id ? action.campus : campus)
+      return state.map(campus => +campus.id === action.campus.id ? action.campus : campus) // I like it!
     default:
       return state
   }
