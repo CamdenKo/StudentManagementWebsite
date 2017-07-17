@@ -59,7 +59,7 @@ function AllStudents(props){
 function mapStateToProps(state){
   return{
     students: state.students,
-    fields: state.fields,
+    fields: state.fields,// Is this necessary?
     editStudent: state.fields.editStudent
   }
 }

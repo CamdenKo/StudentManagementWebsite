@@ -23,6 +23,16 @@ export function toggleEditStudent(studentId){
   }
 }
 
+// Consider this instead...
+//
+// let initialState = {
+//   student: {},
+//   campus: {},
+//   editStudent: {}
+// }
+//
+// export default function fieldReducer(state = initialState, action){
+
 export default function fieldReducer(state = {student:{},campus:{}, editStudent:{}}, action){
   let out = Object.assign({}, state)
   switch (action.type){
@@ -41,3 +51,5 @@ export default function fieldReducer(state = {student:{},campus:{}, editStudent:
       return state
   }
 }
+
+// didn't get to examine this in more detail, but is fieldsReducer completely necessary?

@@ -14,7 +14,7 @@ module.exports = db.define('student', {
   },
   imageUrl: Sequelize.STRING
 }, {
-  defaultScope: {
+  defaultScope: { //pretty cool use of defaultScope
     include: [
       { model: Campus}
     ]

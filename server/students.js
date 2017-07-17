@@ -49,7 +49,7 @@ router.delete('/:id', function(req,res,next){
 
 router.post('/', function(req,res,next){
   console.log(req.body)
-  Campus.findOne({
+  Campus.findOne({//Any reason you didn't just do findById?
     where:{
       id: req.body.campusId
     }
@@ -58,7 +58,7 @@ router.post('/', function(req,res,next){
     const student = Student.build(req.body)
     student.setCampus(campus, { save: false})
     return student.save()
-      .then(studentOut => {
+      .then(studentOut => {//keep it flush!  Try your best not to nest then's unless absolutely necessary ***
         studentOut = studentOut.toJSON()
         studentOut.campus = campus
         return studentOut
