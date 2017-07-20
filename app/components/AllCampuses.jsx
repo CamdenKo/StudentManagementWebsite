@@ -17,7 +17,7 @@ function AllCampuses(props){
       <div className = 'row'>
         {
           props.campuses.map(campus => (
-          <div key = {campus.id} className = 'col s12 m6 l4'>
+          <div key = {campus.id} className = 'col s12 m6'>
             <div  className = "card">
               <div className="card-image waves-effect waves-block waves-light">
                 <img className="activator" src={`${campus.imageUrl}`}  />

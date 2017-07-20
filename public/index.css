@@ -17,3 +17,7 @@
 .firstColor{
   background-color: #364F6B
 }
+
+.collection {
+  overflow: visible;
+}
