@@ -90,7 +90,7 @@ export default function studentReducer(state = [], action){
       let out = [...state]
       return out.map(stud => {
         if(stud.id == action.student.id) return action.student
-        else rçeturn stud
+        else return stud
       })
     default:
       return state
