@@ -65,7 +65,6 @@ function AllCampuses(props){
         <AddCampus />
       </Modal>
     </div>
-
   )
 }
 
