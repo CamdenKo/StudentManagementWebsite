@@ -17,4 +17,4 @@ yarn
 yarn start
 ```
 ## Running Demo
-https://studentmanagementwebsite.herokuapp.com/campuses
+https://campusconnect17.herokuapp.com
